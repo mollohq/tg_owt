@@ -54,6 +54,9 @@ project(tg_owt
 )
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT tg_owt)
 
+message(STATUS "Building PACKAGED BUILD: ${TG_OWT_PACKAGED_BUILD}")
+message(STATUS "Building SHARED LIBS: ${BUILD_SHARED_LIBS}")
+
 get_filename_component(webrtc_loc "src" REALPATH)
 set(third_party_loc ${webrtc_loc}/third_party)
 set(tools_loc ${webrtc_loc}/tools)

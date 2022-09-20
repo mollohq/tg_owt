@@ -122,9 +122,11 @@ function(link_libabsl target_name)
                 absl::type_traits
                 absl::variant
             )
+            target_include_directories(${target_name} PRIVATE ${absl_INCLUDE_DIRS})
         endif()
     endif()
     if (NOT absl_FOUND)
+        message(STATUS "Using built-in ABSEIL")
         target_link_libraries(${target_name} PRIVATE tg_owt::libabsl)
     endif()
 endfunction()

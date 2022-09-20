@@ -27,7 +27,7 @@ namespace webrtc_win {
 // This interface represents the main input-related parts of the complete
 // AudioDeviceModule interface.
 class AudioInput {
- public:
+public:
   virtual ~AudioInput() {}
 
   virtual int Init() = 0;
@@ -35,14 +35,14 @@ class AudioInput {
   virtual int NumDevices() const = 0;
   virtual int SetDevice(int index) = 0;
   virtual int SetDevice(AudioDeviceModule::WindowsDeviceType device) = 0;
-  virtual int DeviceName(int index, std::string* name, std::string* guid) = 0;
-  virtual void AttachAudioBuffer(AudioDeviceBuffer* audio_buffer) = 0;
+  virtual int DeviceName(int index, std::string *name, std::string *guid) = 0;
+  virtual void AttachAudioBuffer(AudioDeviceBuffer *audio_buffer) = 0;
   virtual bool RecordingIsInitialized() const = 0;
   virtual int InitRecording() = 0;
   virtual int StartRecording() = 0;
   virtual int StopRecording() = 0;
   virtual bool Recording() = 0;
-  virtual int VolumeIsAvailable(bool* available) = 0;
+  virtual int VolumeIsAvailable(bool *available) = 0;
   virtual int RestartRecording() = 0;
   virtual bool Restarting() const = 0;
   virtual int SetSampleRate(uint32_t sample_rate) = 0;
@@ -51,7 +51,7 @@ class AudioInput {
 // This interface represents the main output-related parts of the complete
 // AudioDeviceModule interface.
 class AudioOutput {
- public:
+public:
   virtual ~AudioOutput() {}
 
   virtual int Init() = 0;
@@ -59,14 +59,14 @@ class AudioOutput {
   virtual int NumDevices() const = 0;
   virtual int SetDevice(int index) = 0;
   virtual int SetDevice(AudioDeviceModule::WindowsDeviceType device) = 0;
-  virtual int DeviceName(int index, std::string* name, std::string* guid) = 0;
-  virtual void AttachAudioBuffer(AudioDeviceBuffer* audio_buffer) = 0;
+  virtual int DeviceName(int index, std::string *name, std::string *guid) = 0;
+  virtual void AttachAudioBuffer(AudioDeviceBuffer *audio_buffer) = 0;
   virtual bool PlayoutIsInitialized() const = 0;
   virtual int InitPlayout() = 0;
   virtual int StartPlayout() = 0;
   virtual int StopPlayout() = 0;
   virtual bool Playing() = 0;
-  virtual int VolumeIsAvailable(bool* available) = 0;
+  virtual int VolumeIsAvailable(bool *available) = 0;
   virtual int RestartPlayout() = 0;
   virtual bool Restarting() const = 0;
   virtual int SetSampleRate(uint32_t sample_rate) = 0;
@@ -78,10 +78,10 @@ rtc::scoped_refptr<AudioDeviceModuleForTest>
 CreateWindowsCoreAudioAudioDeviceModuleFromInputAndOutput(
     std::unique_ptr<AudioInput> audio_input,
     std::unique_ptr<AudioOutput> audio_output,
-    TaskQueueFactory* task_queue_factory);
+    TaskQueueFactory *task_queue_factory);
 
-}  // namespace webrtc_win
+} // namespace webrtc_win
 
-}  // namespace webrtc
+} // namespace webrtc
 
-#endif  // MODULES_AUDIO_DEVICE_WIN_AUDIO_DEVICE_MODULE_WIN_H_
+#endif // MODULES_AUDIO_DEVICE_WIN_AUDIO_DEVICE_MODULE_WIN_H_
