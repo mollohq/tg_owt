@@ -100,35 +100,36 @@ endfunction()
 # * -DCMAKE_CXX_STANDARD=17 on Linux
 # * -DCMAKE_CXX_STANDARD=14 on macOS
 function(link_libabsl target_name)
-    if (TG_OWT_PACKAGED_BUILD)
-        find_package(absl)
-        set(absl_FOUND ${absl_FOUND} PARENT_SCOPE)
-        if (absl_FOUND)
-            target_link_libraries(${target_name}
-            INTERFACE
-                absl::algorithm_container
-                absl::bind_front
-                absl::config
-                absl::core_headers
-                absl::flat_hash_map
-                absl::inlined_vector
-                absl::flags
-                absl::flags_parse
-                absl::flags_usage
-                absl::memory
-                absl::optional
-                absl::strings
-                absl::synchronization
-                absl::type_traits
-                absl::variant
-            )
-            target_include_directories(${target_name} PRIVATE ${absl_INCLUDE_DIRS})
-        endif()
-    endif()
-    if (NOT absl_FOUND)
+#    if (TG_OWT_PACKAGED_BUILD)
+#        find_package(absl)
+#        set(absl_FOUND ${absl_FOUND} PARENT_SCOPE)
+#        if (absl_FOUND)
+#            message(STATUS "Using system ABSEIL")
+#            target_link_libraries(${target_name}
+#            PRIVATE
+#                absl::algorithm_container
+#                absl::bind_front
+#                absl::config
+#                absl::core_headers
+#                absl::flat_hash_map
+#                absl::inlined_vector
+#                absl::flags
+#                absl::flags_parse
+#                absl::flags_usage
+#                absl::memory
+#                absl::optional
+#                absl::strings
+#                absl::synchronization
+#                absl::type_traits
+#                absl::variant
+#            )
+#            target_include_directories(${target_name} PRIVATE ${absl_INCLUDE_DIRS})
+#        endif()
+#    endif()
+#    if (NOT absl_FOUND)
         message(STATUS "Using built-in ABSEIL")
         target_link_libraries(${target_name} PRIVATE tg_owt::libabsl)
-    endif()
+#    endif()
 endfunction()
 
 # libopenh264
